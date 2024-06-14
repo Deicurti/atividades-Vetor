@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 10 </title>
+</head>
+<body>
+    
+    <title>Ordenação de Mercadorias</title>
+
+    <h1>Ordenação de Mercadorias por Quantidade</h1>
+    <div>
+        <label for="codigoInput">Código da Mercadoria:</label>
+        <input type="text" id="codigoInput">
+        <br>
+        <label for="quantidadeInput">Quantidade:</label>
+        <input type="number" id="quantidadeInput">
+        <br>
+        <button onclick="addMercadoria()">Adicionar Mercadoria</button>
+    </div>
+    <br>
+    <div>
+        <button onclick="sortAndShowMercadorias()">Mostrar Mercadorias</button>
+        <div id="sortedMercadorias"></div>
+    </div>
+
+    <script>
+        
+        let codigos = [];
+        let quantidades = [];
+
+        
+        function addMercadoria() {
+            let codigo = document.getElementById("codigoInput").value;
+            let quantidade = document.getElementById("quantidadeInput").value;
+
+            if (codigo && quantidade) {
+                if (codigos.length < 15) {
+                    codigos.push(codigo);
+                    quantidades.push(parseInt(quantidade));
+                    document.getElementById("codigoInput").value = "";
+                    document.getElementById("quantidadeInput").value = "";
+                    alert("Mercadoria adicionada com sucesso!");
+                } else {
+                    alert("Já foram adicionadas 15 mercadorias.");
+                }
+            } else {
+                alert("Por favor, preencha ambos os campos.");
+            }
+        }
+
+        
+        function sortAndShowMercadorias() {
+            
+            let mercadorias = codigos.map((codigo, index) => {
+                return { codigo: codigo, quantidade: quantidades[index] };
+            });
+
+            
+            mercadorias.sort((a, b) => a.quantidade - b.quantidade);
+
+            
+            let sortedMercadoriasDiv = document.getElementById("sortedMercadorias");
+            sortedMercadoriasDiv.innerHTML = "<h3>Mercadorias Ordenadas por Quantidade (Crescente)</h3>";
+
+            mercadorias.forEach(mercadoria => {
+                sortedMercadoriasDiv.innerHTML += `<p>Código: ${mercadoria.codigo}, Quantidade: ${mercadoria.quantidade}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>

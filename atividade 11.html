@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <body>
+        <title>Verificação de Matrícula</title>
+        <h1>Verificação de Matrícula</h1>
+        <div>
+            <label for="matriculaInput">Digite a Matrícula:</label>
+            <input type="number" id="matriculaInput">
+            <br>
+            <button onclick="verificarMatricula()">Verificar Matrícula</button>
+        </div>
+        <br>
+        <div id="resultado"></div>
+    
+        <script>
+            
+            let matriculas = [];
+    
+          
+            function verificarMatricula() {
+                let matricula = parseInt(document.getElementById("matriculaInput").value);
+    
+                if (!isNaN(matricula)) {
+                    if (matriculas.includes(matricula)) {
+                        document.getElementById("resultado").textContent = `A matrícula ${matricula} está presente no vetor.`;
+                    } else {
+                        document.getElementById("resultado").textContent = `A matrícula ${matricula} NÃO está presente no vetor.`;
+                    }
+                } else {
+                    alert("Por favor, insira um número válido.");
+                }
+            }
+        </script>
+    </body>
+    </html>
+    
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 7 </title>
+</head>
+<body>
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Multiplicação e Ordenação de Vetor</title>
+  </head>
+  <body>
+      <h1>Multiplicação e Ordenação de Vetor</h1>
+      <div>
+          <label for="numberInput">Digite um número:</label>
+          <input type="number" id="numberInput">
+          <br>
+          <button onclick="addNumber()">Adicionar Número</button>
+      </div>
+      <br>
+      <div>
+          <button onclick="processNumbers()">Processar Números</button>
+          <div id="originalList"></div>
+          <div id="multipliedList"></div>
+      </div>
+  
+      <script>
+          
+          let originalNumbers = [];
+          let multipliedNumbers = [];
+  
+          
+          function addNumber() {
+              let number = document.getElementById("numberInput").value;
+  
+              if (number) {
+                  if (originalNumbers.length < 50) {
+                      originalNumbers.push(parseFloat(number));
+                      document.getElementById("numberInput").value = "";
+                      alert("Número adicionado com sucesso!");
+                  } else {
+                      alert("Já foram adicionados 50 números.");
+                  }
+              } else {
+                  alert("Por favor, insira um número.");
+              }
+          }
+  
+          
+          function processNumbers() {
+              multipliedNumbers = originalNumbers.map(num => num * 7);
+              multipliedNumbers.sort((a, b) => b - a);
+  
+              displayNumbers();
+          }
+  
+          
+          function displayNumbers() {
+              let originalListDiv = document.getElementById("originalList");
+              let multipliedListDiv = document.getElementById("multipliedList");
+              originalListDiv.innerHTML = "<h3>Vetor Original</h3>";
+              multipliedListDiv.innerHTML = "<h3>Vetor Multiplicado por 7 (Ordem Decrescente)</h3>";
+  
+              for (let i = 0; i < originalNumbers.length; i++) {
+                  originalListDiv.innerHTML += `<p>${originalNumbers[i]}</p>`;
+              }
+  
+              for (let i = 0; i < multipliedNumbers.length; i++) {
+                  multipliedListDiv.innerHTML += `<p>${multipliedNumbers[i]}</p>`;
+              }
+          }
+      </script>
+  </body>
+  </html>
+  
+</body>
+</html>

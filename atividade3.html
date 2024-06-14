@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3 </title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Multiplicação de Vetor</title>
+    </head>
+    <body>
+        <h1>Multiplicação de Vetor</h1>
+        <div>
+            <label for="numberInput">Digite um número:</label>
+            <input type="number" id="numberInput">
+            <br>
+            <button onclick="addNumber()">Adicionar Número</button>
+        </div>
+        <br>
+        <div>
+            <button onclick="multiplyNumbers()">Multiplicar Números por 3</button>
+            <div id="originalList"></div>
+            <div id="multipliedList"></div>
+        </div>
+    
+        <script>
+           
+            let numbers = [];
+            let multipliedNumbers = [];
+    
+            
+            function addNumber() {
+                let number = document.getElementById("numberInput").value;
+    
+                if (number) {
+                    if (numbers.length < 50) {
+                        numbers.push(parseFloat(number));
+                        document.getElementById("numberInput").value = "";
+                        alert("Número adicionado com sucesso!");
+                    } else {
+                        alert("Já foram adicionados 50 números.");
+                    }
+                } else {
+                    alert("Por favor, insira um número.");
+                }
+            }
+    
+            
+            function multiplyNumbers() {
+                multipliedNumbers = numbers.map(num => num * 3);
+    
+                let originalListDiv = document.getElementById("originalList");
+                let multipliedListDiv = document.getElementById("multipliedList");
+                originalListDiv.innerHTML = "<h3>Vetor Original</h3>";
+                multipliedListDiv.innerHTML = "<h3>Vetor Multiplicado por 3</h3>";
+    
+                for (let i = 0; i < numbers.length; i++) {
+                    originalListDiv.innerHTML += `<p>${numbers[i]}</p>`;
+                    multipliedListDiv.innerHTML += `<p>${multipliedNumbers[i]}</p>`;
+                }
+            }
+        </script>
+    </body>
+    </html>
+    
+</body>
+</html>

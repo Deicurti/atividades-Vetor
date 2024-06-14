@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1 </title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Cadastro de Matrículas de Alunos</title>
+    </head>
+    <body>
+        <h1>Cadastro de Matrículas de Alunos</h1>
+        <div>
+            <label for="studentID">Número da Matrícula:</label>
+            <input type="text" id="studentID">
+            <br>
+            <button onclick="addStudentID()">Adicionar Matrícula</button>
+        </div>
+        <br>
+        <div>
+            <button onclick="showStudentIDs()">Mostrar Matrículas</button>
+            <div id="studentList"></div>
+        </div>
+    
+        <script>
+           
+            let studentIDs = [];
+    
+            
+            function addStudentID() {
+                let id = document.getElementById("studentID").value;
+    
+                if (id) {
+                    if (studentIDs.length < 100) {
+                        if (!studentIDs.includes(id)) {
+                            studentIDs.push(id);
+                            document.getElementById("studentID").value = "";
+                            alert("Matrícula adicionada com sucesso!");
+                        } else {
+                            alert("Esse número de matrícula já foi adicionado. Por favor, insira um número diferente.");
+                        }
+                    } else {
+                        alert("Já foram adicionadas 100 matrículas.");
+                    }
+                } else {
+                    alert("Por favor, insira um número de matrícula.");
+                }
+            }
+    
+          
+            function showStudentIDs() {
+                let studentListDiv = document.getElementById("studentList");
+                studentListDiv.innerHTML = "";  
+    
+                for (let i = 0; i < studentIDs.length; i++) {
+                    studentListDiv.innerHTML += `<p>Matrícula: ${studentIDs[i]}</p>`;
+                }
+            }
+        </script>
+    </body>
+    </html>
+    
+</body>
+</html>

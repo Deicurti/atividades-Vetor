@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 9 </title>
+</head>
+<body>
+  <head>
+      <title>Professores e Tempo de Profissão</title>
+      <h1>Professores e Tempo de Profissão</h1>
+      <div>
+          <label for="professorInput">Nome do Professor:</label>
+          <input type="text" id="professorInput">
+          <br>
+          <label for="tempoInput">Tempo de Profissão (anos):</label>
+          <input type="number" id="tempoInput">
+          <br>
+          <button onclick="addProfessor()">Adicionar Professor</button>
+      </div>
+      <br>
+      <div>
+          <button onclick="sortAndShowProfessors()">Mostrar Professores</button>
+          <div id="sortedProfessors"></div>
+      </div>
+  
+      <script>
+          
+          let PROFESSOR = [];
+          let TEMPOPROFISSAO = [];
+  
+          
+          function addProfessor() {
+              let professor = document.getElementById("professorInput").value;
+              let tempo = document.getElementById("tempoInput").value;
+  
+              if (professor && tempo) {
+                  if (PROFESSOR.length < 100) {
+                      PROFESSOR.push(professor);
+                      TEMPOPROFISSAO.push(parseFloat(tempo));
+                      document.getElementById("professorInput").value = "";
+                      document.getElementById("tempoInput").value = "";
+                      alert("Professor adicionado com sucesso!");
+                  } else {
+                      alert("Já foram adicionados 100 professores.");
+                  }
+              } else {
+                  alert("Por favor, preencha ambos os campos.");
+              }
+          }
+  
+          
+          function sortAndShowProfessors() {
+              
+              let professors = PROFESSOR.map((prof, index) => {
+                  return { name: prof, time: TEMPOPROFISSAO[index] };
+              });
+  
+             
+              professors.sort((a, b) => b.time - a.time);
+  
+             
+              let sortedProfessorsDiv = document.getElementById("sortedProfessors");
+              sortedProfessorsDiv.innerHTML = "<h3>Professores Ordenados por Tempo de Profissão (Decrescente)</h3>";
+  
+              professors.forEach(professor => {
+                  sortedProfessorsDiv.innerHTML += `<p>Professor: ${professor.name}, Tempo de Profissão: ${professor.time} anos</p>`;
+              });
+          }
+      </script>
+  </body>
+  </html>
+      
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 5 </title>
+</head>
+<body>
+
+    <h1>Cadastro de Produtos</h1>
+    <div>
+        <label for="productCode">Código do Produto:</label>
+        <input type="text" id="productCode">
+        <br>
+        <label for="productQuantity">Quantidade em Estoque:</label>
+        <input type="number" id="productQuantity">
+        <br>
+        <button onclick="addProduct()">Adicionar Produto</button>
+    </div>
+    <br>
+    <div>
+        <button onclick="showProducts()">Mostrar Produtos</button>
+        <div id="productList"></div>
+    </div>
+
+    <script>
+
+
+        let productCodes = [];
+        let productQuantities = [];
+
+
+        function addProduct() {
+            let code = document.getElementById("productCode").value;
+            let quantity = document.getElementById("productQuantity").value;
+
+            if (code && quantity) {
+                productCodes.push(code);
+                productQuantities.push(parseInt(quantity));
+
+                document.getElementById("productCode").value = "";
+                document.getElementById("productQuantity").value = "";
+
+                alert("Produto adicionado com sucesso!");
+            } else {
+                alert("Por favor, preencha ambos os campos.");
+            }
+        }
+
+
+        function showProducts() {
+            let productListDiv = document.getElementById("productList");
+            productListDiv.innerHTML = "";
+
+            for (let i = 0; i < productCodes.length; i++) {
+                productListDiv.innerHTML += `<p>Código do Produto: ${productCodes[i]}, Quantidade em Estoque: ${productQuantities[i]}</p>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

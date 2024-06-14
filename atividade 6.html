@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 6 </title>
+</head>
+<body>
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Ordenação de Matrículas</title>
+  </head>
+  <body>
+      <h1>Ordenação de Matrículas</h1>
+      <div>
+          <label for="registrationNumber">Número da Matrícula:</label>
+          <input type="number" id="registrationNumber">
+          <br>
+          <button onclick="addRegistrationNumber()">Adicionar Matrícula</button>
+      </div>
+      <br>
+      <div>
+          <button onclick="sortAndShowNumbers()">Ordenar e Mostrar Matrículas</button>
+          <div id="sortedList"></div>
+      </div>
+  
+      <script>
+         
+          let registrationNumbers = [];
+  
+          
+          function addRegistrationNumber() {
+              let number = document.getElementById("registrationNumber").value;
+  
+              if (number) {
+                  if (registrationNumbers.length < 30) {
+                      registrationNumbers.push(parseInt(number));
+                      document.getElementById("registrationNumber").value = "";
+                      alert("Matrícula adicionada com sucesso!");
+                  } else {
+                      alert("Já foram adicionadas 30 matrículas.");
+                  }
+              } else {
+                  alert("Por favor, insira um número de matrícula.");
+              }
+          }
+  
+          
+          function sortAndShowNumbers() {
+              registrationNumbers.sort((a, b) => a - b);
+  
+              let sortedListDiv = document.getElementById("sortedList");
+              sortedListDiv.innerHTML = "<h3>Matrículas em Ordem Crescente</h3>";
+  
+              for (let i = 0; i < registrationNumbers.length; i++) {
+                  sortedListDiv.innerHTML += `<p>${registrationNumbers[i]}</p>`;
+              }
+          }
+      </script>
+  </body>
+  </html>
+  
+  
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 8 </title>
+</head>
+<body>
+        <title>Operações com Vetores</title>
+    </head>
+    <body>
+        <h1>Operações com Vetores</h1>
+        <div>
+            <label for="vectorInput">Digite um número para os vetores A e B:</label>
+            <input type="number" id="vectorInput">
+            <br>
+            <button onclick="addNumber()">Adicionar Número</button>
+        </div>
+        <br>
+        <div>
+            <button onclick="processVectors()">Processar Vetores</button>
+            <div id="vectorC"></div>
+            <div id="vectorD"></div>
+        </div>
+    
+        <script>
+           
+            let A = [];
+            let B = [];
+            let C = [];
+            let D = [];
+    
+            
+            function addNumber() {
+                let number = parseFloat(document.getElementById("vectorInput").value);
+    
+                if (!isNaN(number)) {
+                    if (A.length < 100) {
+                        A.push(number);
+                        B.push(number);
+                        document.getElementById("vectorInput").value = "";
+                        alert("Número adicionado aos vetores A e B com sucesso!");
+                    } else {
+                        alert("Já foram adicionados 100 números aos vetores A e B.");
+                    }
+                } else {
+                    alert("Por favor, insira um número válido.");
+                }
+            }
+    
+            
+            function processVectors() {
+                C = A.map((value, index) => value + B[index]);
+                D = A.map((value, index) => value * B[index]);
+    
+                C.sort((a, b) => b - a);
+                D.sort((a, b) => a - b);
+    
+                displayVectors();
+            }
+    
+            
+            function displayVectors() {
+                let vectorCDiv = document.getElementById("vectorC");
+                let vectorDDiv = document.getElementById("vectorD");
+                vectorCDiv.innerHTML = "<h3>Vetor C (Soma) em Ordem Decrescente</h3>";
+                vectorDDiv.innerHTML = "<h3>Vetor D (Multiplicação) em Ordem Crescente</h3>";
+    
+                C.forEach(value => {
+                    vec
+                })
+
+            }
+     
+</body>
+</html>

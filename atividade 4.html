@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4 </title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Professores</title>
+</head>
+<body>
+    <h1>Cadastro de Professores</h1>
+    <div>
+        <label for="teacherName">Nome do Professor:</label>
+        <input type="text" id="teacherName">
+        <br>
+        <label for="yearsOfService">Tempo de Profissão (anos):</label>
+        <input type="number" id="yearsOfService">
+        <br>
+        <button onclick="addTeacher()">Adicionar Professor</button>
+    </div>
+    <br>
+    <div>
+        <button onclick="showTeachers()">Mostrar Professores</button>
+        <div id="teacherList"></div>
+    </div>
+
+    <script>
+        
+        let PROFESSOR = [];
+        let TEMPOPROFISSAO = [];
+
+        
+        function addTeacher() {
+            let name = document.getElementById("teacherName").value;
+            let years = document.getElementById("yearsOfService").value;
+
+            if (name && years) {
+                if (PROFESSOR.length < 50) {
+                    PROFESSOR.push(name);
+                    TEMPOPROFISSAO.push(parseInt(years));
+                    document.getElementById("teacherName").value = "";
+                    document.getElementById("yearsOfService").value = "";
+                    alert("Professor adicionado com sucesso!");
+                } else {
+                    alert("Já foram adicionados 50 professores.");
+                }
+            } else {
+                alert("Por favor, preencha ambos os campos.");
+            }
+        }
+
+        // Função para mostrar os professores e seus tempos de profissão
+        function showTeachers() {
+            let teacherListDiv = document.getElementById("teacherList");
+            teacherListDiv.innerHTML = "<h3>Professores e seus Tempos de Profissão</h3>";
+
+            for (let i = 0; i < PROFESSOR.length; i++) {
+                teacherListDiv.innerHTML += `<p>Professor: ${PROFESSOR[i]}, Tempo de Profissão: ${TEMPOPROFISSAO[i]} anos</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>
